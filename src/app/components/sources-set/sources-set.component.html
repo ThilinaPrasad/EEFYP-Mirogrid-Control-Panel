@@ -1,0 +1,49 @@
+<div class="container main-cont">
+  <div class="row">
+    <div class="col-md-3">
+      <!--Grid Connection indicator-->
+      <div class="source-wrapper text-center">
+        <h4>Grid Connection</h4>
+        <div class="status-icon-wrapper">
+      <i class="far success status" [ngClass]="{'success fa-check-circle': girdConnStatus=='ON','error fa-times-circle': girdConnStatus=='OFF'}"></i>
+        </div>
+        <h6>Connection Status : {{ girdConnStatus }}</h6>
+        <pre>Last Checked:</pre>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <!--Diesel gene status indicator-->
+      <div class="source-wrapper text-center">
+        <h4>Diesel Generator</h4>
+        <div class="status-icon-wrapper">
+          <i class="far status" [ngClass]="{'success fa-check-circle': dieselGenStatus=='ON','error fa-times-circle': dieselGenStatus=='OFF'}"></i>
+        </div>
+        <h6>Connection Status : {{ dieselGenStatus }}</h6>
+        <pre>Last Checked:</pre>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <!--Solar PV source status indicator-->
+      <div class="source-wrapper text-center">
+        <h4>Solar PV</h4>
+        <div class="status-icon-wrapper">
+          <i class="far status" [ngClass]="{'success fa-check-circle': solarPvStatus=='ON','error fa-times-circle': solarPvStatus=='OFF'}"></i>
+        </div>
+        <h6>Connection Status : {{ solarPvStatus }}</h6>
+        <pre class="last-checked">Last Checked:</pre>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="source-wrapper text-center">
+        <h4>Battery Status</h4>
+        <div class="status-battery-wrapper">
+          <div class="battery" [ngClass]="{ 'battery-warn': batteryPercentage<=25, 'battery-alert' : batteryPercentage<=10 }">
+            <div class="battery-level text-center" [ngStyle]="{ 'height': batteryPercentage+'%' }" [ngClass]="{ 'battery-level-full': batteryPercentage==100, 'battery-level-warn': batteryPercentage<=25, 'battery-level-alert' : batteryPercentage<=10 }"><div>{{ batteryPercentage+'%' }}</div></div>
+          </div>
+        </div>
+        <h6>Percentage : {{ batteryPercentage+'%' }}</h6>
+        <pre class="last-checked">Last Checked:</pre>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+
+.carousel-item{
+  width:100vw;
+  height: 100vh;
+}
+
+.slider{
+  position: absolute;
+  top: 0px;
+}
+
+.carousel-indicators{
+  position: absolute;
+  bottom: 70px;
+}
+
+.carousel-caption{
+  position: absolute;
+  bottom: 80px;
+}
+
+app-floating-btn{
+  display: none;
+  position: relative;
+  bottom: -87vh;
+  right: -20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .carousel-item img{
+   height: 100vh!important;
+  }
+  app-floating-btn{
+    display: block;
+  }
+}
+
+app-footerbar{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: inline-block;
+}

@@ -1,0 +1,13 @@
+.container-wrapper{
+  padding: 25px 25px 10px 25px;
+}
+
+.nav-link{
+  color: red;
+  font-family: "Times New Roman";
+}
+
+.nav-link.active{
+  color: white;
+  background-color: red!important;
+}

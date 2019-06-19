@@ -1,0 +1,111 @@
+<div class="container main-cont">
+  <div class="row">
+    <div class="col-md-2 offset-xl-1">
+      <!--Main Agent indicator-->
+      <div class="source-wrapper text-center">
+        <h4>Main<br>Agent</h4>
+        <div class="status-icon-wrapper">
+          <i class="far success status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': mainAgent=='ACTIVE','error fa-times-circle': mainAgent=='TERMINATED'}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(0)"></i>
+        </div>
+        <h6>Connection Status</h6>
+        <h6 [ngClass]="{'success': mainAgent=='ACTIVE','error': mainAgent=='TERMINATED'}">{{ mainAgent }}</h6>
+        <pre>Last Checked</pre>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <!--Solar PV Agent indicator-->
+      <div class="source-wrapper text-center">
+        <h4>Solar PV<br>Agent</h4>
+        <div class="status-icon-wrapper">
+          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': solarPvAgent=='ACTIVE','error fa-times-circle': solarPvAgent=='TERMINATED'}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(1)"></i>
+        </div>
+        <h6>Connection Status</h6>
+        <h6 [ngClass]="{'success': solarPvAgent=='ACTIVE','error': solarPvAgent=='TERMINATED'}">{{ solarPvAgent }}</h6>
+        <pre>Last Checked</pre>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <!--Diesel Gen. Agent indicator-->
+      <div class="source-wrapper text-center">
+        <h4>Diesel Gen.<br>Agent</h4>
+        <div class="status-icon-wrapper">
+          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': dieselGenAgent=='ACTIVE','error fa-times-circle': dieselGenAgent=='TERMINATED'}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(2)"></i>
+        </div>
+        <h6>Connection Status</h6>
+        <h6 [ngClass]="{'success': dieselGenAgent=='ACTIVE','error': dieselGenAgent=='TERMINATED'}">{{ dieselGenAgent }}</h6>
+        <pre class="last-checked">Last Checked</pre>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <!--Battery Agent indicator-->
+      <div class="source-wrapper text-center">
+        <h4>Battery<br>Agent</h4>
+        <div class="status-battery-wrapper">
+          <div class="battery" [ngClass]="{ 'battery-warn': batteryPercentage<=25, 'battery-alert' : batteryPercentage<=10 }">
+            <div class="battery-level text-center" [ngStyle]="{ 'height': batteryPercentage+'%' }" [ngClass]="{ 'battery-level-full': batteryPercentage==100, 'battery-level-warn': batteryPercentage<=25, 'battery-level-alert' : batteryPercentage<=10 }"><div>{{ batteryPercentage+'%' }}</div></div>
+          </div>
+        </div>
+        <h6>Percentage : {{ batteryPercentage+'%' }}</h6>
+        <h6 [ngClass]="{'success': batteryAgent=='ACTIVE','error': batteryAgent=='TERMINATED'}">{{ batteryAgent }}</h6>
+        <pre class="last-checked">Last Checked:</pre>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <!--Load Agent indicator-->
+      <div class="source-wrapper text-center">
+        <h4>Load<br>Agent</h4>
+        <div class="status-icon-wrapper">
+          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': loadAgent=='ACTIVE','error fa-times-circle': loadAgent=='TERMINATED'}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(3)"></i>
+        </div>
+        <h6>Connection Status</h6>
+        <h6 [ngClass]="{'success': loadAgent=='ACTIVE','error': loadAgent=='TERMINATED'}">{{ loadAgent }}</h6>
+        <pre class="last-checked">Last Checked</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="detailsModel" tabindex="-1" role="dialog" aria-labelledby="dataModel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mx-auto d-block" id="exampleModalLongTitle">{{ modelTitle }} Data</h5>
+        <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table text-center table-hover">
+          <thead>
+          <tr>
+            <th scope="col">Property</th>
+            <th scope="col">Value</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Status</td>
+            <td [ngClass]="{'success': agentStatus=='ACTIVE','error': agentStatus=='TERMINATED'}">{{ agentStatus }}</td>
+          </tr>
+          <tr>
+          <tr>
+            <td>Voltage (v)</td>
+            <td>{{ agentVoltage }}</td>
+          </tr>
+          <tr>
+            <td>Current (A)</td>
+            <td>{{ agentCurrent }}</td>
+          </tr>
+          <tr>
+            <td>Power (W)</td>
+            <td>{{ agentPower }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

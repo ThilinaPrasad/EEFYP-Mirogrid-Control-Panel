@@ -1,0 +1,40 @@
+
+.nav-link:hover{
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar-nav{
+    display: none;
+  }
+}
+
+.boxShadow{
+  /*box-shadow: 0px 2px 10px lightgray;*/
+}
+.transparent{
+  background-color: transparent!important;
+}
+
+.text-white{
+  color: white!important;
+}
+
+.text-white:hover{
+  color: rgba(255,255,255,0.7)!important;
+}
+
+.active-class{
+  color: red!important;
+}
+
+.user-img{
+  width:37px;
+  height: 37px;
+  border-radius: 50%;
+}
+
+.user-img:hover{
+  border: red solid 2px;
+  cursor: pointer;
+}

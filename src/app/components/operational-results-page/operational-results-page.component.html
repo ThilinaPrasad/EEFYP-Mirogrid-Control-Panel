@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<app-floating-btn></app-floating-btn>
+<div class="container-wrapper">
+<nav>
+  <div class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-sources-tab" data-toggle="tab" href="#nav-sources" role="tab" aria-controls="nav-sources" aria-selected="true">View Sources</a>
+    <a class="nav-item nav-link" id="nav-agents-tab" data-toggle="tab" href="#nav-agents" role="tab" aria-controls="nav-agents" aria-selected="false">View Agents</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-sources" role="tabpanel" aria-labelledby="nav-sources-tab">
+    <app-sources-set></app-sources-set>
+  </div>
+  <div class="tab-pane fade" id="nav-agents" role="tabpanel" aria-labelledby="nav-agents-tab">
+    <app-agents-set></app-agents-set>
+  </div>
+</div>
+</div>
+<app-footerbar [textColor]="'gray'"></app-footerbar>

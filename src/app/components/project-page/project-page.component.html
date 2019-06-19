@@ -1,0 +1,134 @@
+<app-navbar></app-navbar>
+<app-floating-btn></app-floating-btn>
+<div class="row">
+  <div class="sidebar" [ngClass]="{ 'sidebar-open': sideMenuOpen, 'sidebar-closed': !sideMenuOpen }">
+    <div class="list-group" >
+      <a href="#" class="list-group-item text-center heading">Headings</a>
+      <a pageScroll  href="#title-1" class="list-group-item">1. Introduction</a>
+      <a pageScroll  href="#title-2" class="list-group-item">2. Motivation</a>
+      <a pageScroll  href="#title-3" class="list-group-item">3. Scope & Objectives</a>
+
+      <!--Start Exapndable Content-->
+      <a pageScroll  href="#title-4" class="list-group-item d-flex justify-content-between" data-toggle="collapse" data-target="#titleFour" aria-expanded="false" aria-controls="titleFour">
+        4. What is a Microgrid?
+        <i class="fas fa-plus"></i>
+      </a>
+      <div class="list-group collapse" id="titleFour">
+        <a pageScroll  href="#title-4-1" class="list-group-item sub-title">4.1. Microgrid characteristics</a>
+      </div>
+      <!--End Exapndable Content-->
+
+      <!--Start Exapndable Content-->
+      <a pageScroll  href="#title-5" class="list-group-item d-flex justify-content-between" data-toggle="collapse" data-target="#titleFive" aria-expanded="false" aria-controls="titleFive">
+        5.	Multi Agent System for Microgrids
+        <i class="fas fa-plus"></i>
+      </a>
+      <div class="list-group collapse" id="titleFive">
+        <a pageScroll  href="#title-5-1" class="list-group-item sub-title">5.1. What is a MAS?</a>
+        <a pageScroll  href="#title-5-2" class="list-group-item sub-title">5.2.	Advantages of a Multi-Agent Approach</a>
+        <a pageScroll  href="#title-5-3" class="list-group-item sub-title">5.3. MAS configuration</a>
+      </div>
+      <!--End Exapndable Content-->
+
+      <a pageScroll  href="#title-6" class="list-group-item">6. Proposed System</a>
+      <a pageScroll  href="#title-7" class="list-group-item">7.	Proposed Algorithms</a>
+      <a pageScroll  href="#title-8" class="list-group-item">8.	JADE Simulation Results </a>
+    </div>
+  </div>
+  <div class="main-content" [ngClass]="{ 'main-content-open': sideMenuOpen, 'main-content-closed': !sideMenuOpen }">
+    <div class="toggle-side-menu-btn" (click)="sidemenuToggle()">
+      <i class="fas fa-chevron-right" [ngClass]="{ 'fa-chevron-left': sideMenuOpen, 'fa-chevron-right': !sideMenuOpen }"></i>
+    </div>
+
+    <div    class="text-content text-justify">
+      <h1 class="text-center">Project Description</h1>
+      <h2 id="title-1">1.	Introduction</h2>
+      <p>Our project is about a computer-aided control system based on Multi-Agent Technology which is composed of multiple agents which are capable of interacting with each other in order to provide and an autonomous control over the distributed generation units of a microgrid to optimize the energy usage of the system.</p>
+      <h2 id="title-2">2.	Motivation</h2>
+    <p>Today Distributed Energy Generation has become an emerging trend in the world. Microgrids provide a suitable platform for the purpose. Therefore the continuous controlling and monitoring of Microgrids has become a necessity. Multi Agent System can be identified as an autonomous controlling method for distributed generation in Microgrids as comparatively a low cost method.</p>
+      <h2 id="title-3">3.	Scope and Objectives</h2>
+      <h4>Scope</h4>
+      <p>Develop a multi agent system based energy management system for Microgrids.</p>
+      <ul>
+        <li>Develop a Main Agent.</li>
+        <li>Develop agents for Distributed Energy Sources.</li>
+        <li>Solar Photovoltaic Agent</li>
+        <li>Diesel Generator Agent</li>
+        <li>Develop an agent for Battery Backup.</li>
+        <li>Develop agents for Loads.</li>
+      </ul>
+      <h4>Objective</h4>
+      <p>Design and development of a Multi Agent System which is applicable for Energy Management purposes of a small scale Microgrid.
+        Sub objectives:</p>
+      <p>Implementing Agents in a way that they are,</p>
+      <ul>
+        <li>Capable of interacting with each other.</li>
+        <li>Carrying out the specified tasks even when the Central Controller is not available.</li>
+        <li>Adaptable to multiple Energy Management algorithms.</li>
+      </ul>
+      <h2 id="title-4" >4.	What is a Microgrid?</h2>
+
+      <p>A microgrid is a group of interconnected loads and distributed energy resources within clearly defined electrical boundaries that acts as a single controllable entity with respect to the grid.
+      The grid connects loads to central power sources, allowing customers to use appliances, heating/ cooling systems and electronics. When a part of a grid need to be repaired the connected loads may get affected. This is where a microgrid can help.
+      A microgrid generally operates while connected to the grid, but importantly, it can break off and operate on its own using local energy generation in times of power outages, or for other reasons. It can be powered by distributed generators, batteries, and/or renewable resources like solar panels.
+        Two modes of operation;</p>
+      <ul>
+        <li>Grid Connected Mode: operates while connected to the grid</li>
+        <li>Island Mode 		: break off and operate on its own using local energy generation in
+      times of power outages, or for other reasons</li>
+      </ul>
+
+      <h4 id="title-4-1">4.1. Microgrid characteristics</h4>
+      <p>Generation and storage options</p>
+      <ul>
+        <li>Inertia of synchronous generators in large scale power plants will provide an excess time for the system to get stabilize. But Renewable sources are lack of inertia. Therefore a significant consideration is towards energy storage.</li>
+        <li>Microgrids often include technologies like solar PV (which outputs DC power) or micro turbines (high frequency AC power) that require power electronic interfaces like DC/AC or DC/AC/DC converters to interface with the electrical system.</li>
+        <li>Inverters can play an important role in frequency and voltage control in islanded Microgrids as well as facilitating participation in black start strategies.</li>
+        <li>The static disconnect switch (SDS) is a key microgrid component for islanding and synchronization; it can be programmed to trip very quickly on overvoltage, under voltage, over frequency, under frequency, or directional overcurrent.</li>
+        <li>Microgrids can essentially be controlled in the same way as the main grid, i.e. by using a <b>three level hierarchical control</b>.</li>
+        <ul>
+          <li>Primary Control – Frequency Control</li>
+          <li>Secondary Control – Voltage Control</li>
+          <li>Tertiary Control –</li>
+              <ul>
+                <li>To enable the economic and optimization operations for the microgrid.</li>
+                <li>Focused on managing battery storage.</li>
+                <li>Distributed generation scheduling and dispatch.</li>
+                <li>Managing import and export of electricity between the microgrid and the utility grid.</li>
+                </ul>
+        </ul>
+      </ul>
+
+      <h2 id="title-5">5.	Multi Agent System for Microgrids</h2>
+      <h4 id="title-5-1">5.1.	What is a MAS?</h4>
+      <p>A multi-agent system is a computerized system composed of multiple intelligent agents which are capable of interacting with each other in order to achieve a common or specified task. Agents are sophisticated physical or software entity that act autonomously to solve a growing number of complex problems.</p>
+      <h4 id="title-5-2">5.2.	Advantages of a Multi-Agent Approach</h4>
+      <p>A MAS has the following advantages over a single agent or centralized approach:</p>
+      <table class="table table-bordered text-center">
+        <thead>
+        <tr>
+          <th scope="col">MAS</th>
+          <th scope="col">Centralized Approach</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Distributes computational resources and capabilities across a network of interconnected agents.</td>
+          <td>Plagued by resource limitations, performance bottlenecks, or critical failures.</td>
+        </tr>
+        <tr>
+          <td>Decentralized and thus does not suffer from the "single point of failure"</td>
+          <td>"Single point of failure" problem associated with centralized systems.</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <p>Enhances overall system performance, specifically along the dimensions of <b>computational efficiency, reliability, extensibility, robustness, maintainability, responsiveness, flexibility, and reuse</b>.</p>
+      <h4 id="title-5-3">5.3.	MAS configuration</h4>
+      <img src="assets/project-page/imgs/project-diagram-1.png" class="mx-auto d-block mt-4 img-fluid" alt="MAS Configuration diagram">
+
+    </div>
+
+  </div>
+</div>
+<app-footerbar [textColor]="'black'"></app-footerbar>

@@ -1,0 +1,8 @@
+<div>
+  <div class="main-btn" [ngClass]="{ 'main-btn-active': floatEnabled }" (click)="floatToggle()"><i class="fas fa-plus"></i></div>
+  <div class="main-btn sub-btn" [ngClass]="{ 'fade-in-1': floatEnabled , 'fade-out-1': !floatEnabled  }"  routerLink="/" placement="left" ngbTooltip="Home"><i class="fas fa-home"></i></div>
+  <div class="main-btn sub-btn" [ngClass]="{ 'fade-in-2': floatEnabled , 'fade-out-2': !floatEnabled  }" routerLink="/operational" routerLinkActive="active-class" placement="left" ngbTooltip="Operations & Results"><i class="fas fa-bolt"></i></div>
+  <div class="main-btn sub-btn" [ngClass]="{ 'fade-in-3': floatEnabled , 'fade-out-3': !floatEnabled  }" routerLink="/project" routerLinkActive="active-class" placement="left" ngbTooltip="Project"><i class="fas fa-project-diagram"></i></div>
+  <div class="main-btn sub-btn" [ngClass]="{ 'fade-in-4': floatEnabled , 'fade-out-4': !floatEnabled  }" routerLink="/about" routerLinkActive="active-class" placement="left" ngbTooltip="About"><i class="fas fa-info-circle"></i></div>
+  <img *ngIf="googleLoginService.isLogged" (click)="logout()" src="{{ userImg }}" class="user-img" [ngClass]="{ 'fade-in-5': floatEnabled , 'fade-out-5': !floatEnabled  }" placement="left" ngbTooltip="{{ 'Logged as: '+userName }}">
+</div>

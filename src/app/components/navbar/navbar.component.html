@@ -1,0 +1,30 @@
+<ngx-loading-bar [color]="'red'" [includeSpinner]="false" [height]="'3px'" [fixed]="true"></ngx-loading-bar>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" [ngClass]="{ 'transparent' : transparent }">
+  <a class="navbar-brand" routerLink="" [ngClass]="{ 'text-white' : transparent }">
+Logo
+  </a>
+
+  <div class="col-md-3 nav-search">
+  </div>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item" >
+      <a class="nav-link" routerLink="" [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-home"></i>&nbsp;Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/operational" routerLinkActive="active-class" [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-bolt"></i>&nbsp;Operations & Results</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/project" routerLinkActive="active-class" [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-project-diagram"></i>&nbsp;Project</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/about" routerLinkActive="active-class" [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-info-circle"></i>&nbsp;About</a>
+    </li>
+    <!--<li class="nav-item" *ngIf="!googleLoginService.isLogged">-->
+      <!--<a class="nav-link" routerLink="/signin" routerLinkActive="active-class" [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-sign-in-alt"></i>&nbsp;Sign In</a>-->
+    <!--</li>-->
+    <li class="nav-item" *ngIf="googleLoginService.isLogged">
+      <img (click)="logout()" class="user-img" placement="left" ngbTooltip="{{ 'Logged as: '+userName }}" [src]="userImg">
+    </li>
+  </ul>
+
+</nav>
