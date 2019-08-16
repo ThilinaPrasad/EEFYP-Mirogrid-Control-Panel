@@ -26,6 +26,7 @@
     "angularx-social-login": "^1.2.7",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
+    "jsonfile": "^5.0.0",
     "ng-animate": "^0.3.4",
     "ng-snotify": "^4.3.1",
     "ngx-page-scroll": "^6.0.2",

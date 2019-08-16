@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {GoogleLoginService} from './google-login.service';
 import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs';
-import {element} from 'protractor';
+
 
 @Injectable({
   providedIn: 'root'

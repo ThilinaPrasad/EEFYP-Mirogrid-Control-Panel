@@ -1,0 +1,49 @@
+.usr-image{
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border: 3px solid rgba(255,0,0,0.7);
+  transition: transform 0.15s ease-in;
+  cursor: pointer;
+}
+
+.usr-image:hover{
+  transform: scale(1.05);
+}
+
+.user-details{
+  padding-top: 20px;
+  background: url("../../../assets/about-page/imgs/back.png");
+  background-size: contain;
+}
+
+.usr-name, .usr-role{
+  font-family: "Times New Roman";
+  font-weight: bold;
+  font-size: large;
+  line-height: normal;
+}
+
+.usr-designation{
+  font-family: "Times New Roman";
+  color: #737373;
+  line-height: normal;
+}
+
+.usr-role{
+font-size: medium;
+  margin-top: 3px;
+}
+
+.top-usr-img{
+  width: 200px;
+  height: 200px;
+}
+
+.second-layer{
+  margin-top: 10px;
+}
+
+.page-title{
+  font-family: "Times New Roman";
+}

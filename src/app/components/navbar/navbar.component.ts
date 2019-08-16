@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GoogleLoginService} from '../../services/auth/google-login.service';
 import {SnotifyService} from 'ng-snotify';
+import {AddUserService} from '../../services/add-user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,11 +13,19 @@ export class NavbarComponent implements OnInit {
   @Input() transparent: boolean;
   private userName;
   private userImg;
+  private role;
+
+  // tslint:disable-next-line:variable-name
+  private add_email;
+  // tslint:disable-next-line:variable-name
+  private add_role = 1;
+
   private signOutNotificationAllow = true;
-  constructor(private googleLoginService: GoogleLoginService, private snotifyService: SnotifyService) {
+  constructor(private googleLoginService: GoogleLoginService, private snotifyService: SnotifyService, private addUsersService: AddUserService) {
     if (googleLoginService.isLogged) {
       this.userName = googleLoginService.user.firstName + ' ' + googleLoginService.user.lastName;
       this.userImg = googleLoginService.user.photoUrl;
+      this.role = googleLoginService.role;
     }
   }
 
@@ -55,4 +64,16 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  addUser() {
+    if (this.add_email && this.add_email.trim()) {
+      // tslint:disable-next-line:variable-name
+      const add_user = [ this.add_email, this.add_role.toString()];
+      this.addUsersService.addUser(add_user);
+    }
+  }
+
+  resetUser(){
+    this.add_email = null;
+    this.add_role = 1;
+  }
 }

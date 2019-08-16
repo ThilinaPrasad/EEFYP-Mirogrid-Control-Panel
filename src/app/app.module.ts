@@ -24,6 +24,8 @@ import {AuthguardServiceService} from './services/auth/authguard-service.service
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import {NgxPageScrollModule} from 'ngx-page-scroll';
+import {FormsModule} from '@angular/forms';
+import {AddUserService} from './services/add-user.service';
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -60,7 +62,8 @@ export function provideConfig() {
     HttpClientModule,
     SnotifyModule,
     NgxPageScrollCoreModule.forRoot({duration: 200, scrollOffset: 70}),
-    NgxPageScrollModule
+    NgxPageScrollModule,
+    FormsModule,
   ],
   providers: [
     {
@@ -70,7 +73,8 @@ export function provideConfig() {
     GoogleLoginService,
     AuthguardServiceService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService
+    SnotifyService,
+    AddUserService,
   ],
   bootstrap: [AppComponent]
 })

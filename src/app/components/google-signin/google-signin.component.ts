@@ -9,7 +9,7 @@ import {SnotifyService} from 'ng-snotify';
   styleUrls: ['./google-signin.component.scss']
 })
 export class GoogleSigninComponent implements OnInit {
-  constructor(private googleSignin: GoogleLoginService, private router: Router,private snotifyService: SnotifyService) {
+  constructor(private googleSignin: GoogleLoginService, private router: Router, private snotifyService: SnotifyService) {
     if (googleSignin.isLogged) {
       router.navigate(['']);
     }

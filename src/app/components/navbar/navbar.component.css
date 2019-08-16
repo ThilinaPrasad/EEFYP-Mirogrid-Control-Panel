@@ -38,3 +38,17 @@
   border: red solid 2px;
   cursor: pointer;
 }
+
+.user-img-2{
+  width:50px;
+  height:50px;
+  border-radius: 50%;
+}
+
+.image-sec:hover{
+  background-color: white;
+}
+
+.link-item{
+  cursor: pointer;
+}

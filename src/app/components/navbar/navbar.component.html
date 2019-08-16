@@ -1,30 +1,81 @@
 <ngx-loading-bar [color]="'red'" [includeSpinner]="false" [height]="'3px'" [fixed]="true"></ngx-loading-bar>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" [ngClass]="{ 'transparent' : transparent }">
   <a class="navbar-brand" routerLink="" [ngClass]="{ 'text-white' : transparent }">
-Logo
+    Logo
   </a>
 
   <div class="col-md-3 nav-search">
   </div>
   <ul class="navbar-nav ml-auto">
-    <li class="nav-item" >
+    <li class="nav-item">
       <a class="nav-link" routerLink="" [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-home"></i>&nbsp;Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/operational" routerLinkActive="active-class" [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-bolt"></i>&nbsp;Operations & Results</a>
+      <a class="nav-link" routerLink="/operational" routerLinkActive="active-class"
+         [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-bolt"></i>&nbsp;Operations & Results</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/project" routerLinkActive="active-class" [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-project-diagram"></i>&nbsp;Project</a>
+      <a class="nav-link" routerLink="/project" routerLinkActive="active-class"
+         [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-project-diagram"></i>&nbsp;Project</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/about" routerLinkActive="active-class" [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-info-circle"></i>&nbsp;About</a>
+      <a class="nav-link" routerLink="/about" routerLinkActive="active-class"
+         [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-info-circle"></i>&nbsp;About</a>
     </li>
     <!--<li class="nav-item" *ngIf="!googleLoginService.isLogged">-->
-      <!--<a class="nav-link" routerLink="/signin" routerLinkActive="active-class" [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-sign-in-alt"></i>&nbsp;Sign In</a>-->
+    <!--<a class="nav-link" routerLink="/signin" routerLinkActive="active-class" [ngClass]="{ 'text-white' : transparent }"><i class="fas fa-sign-in-alt"></i>&nbsp;Sign In</a>-->
     <!--</li>-->
     <li class="nav-item" *ngIf="googleLoginService.isLogged">
-      <img (click)="logout()" class="user-img" placement="left" ngbTooltip="{{ 'Logged as: '+userName }}" [src]="userImg">
+      <img class="user-img" placement="left" ngbTooltip="{{ 'Logged as: '+userName }}" [src]="userImg"
+           data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+      <div class="dropdown-menu dropdown-menu-right mr-3">
+        <div class="dropdown-item image-sec">
+          <img class="user-img-2 m-auto d-block" ngbTooltip="{{ 'Logged as: '+userName }}" [src]="userImg">
+          <span class="mt-3"><b>{{ userName }}</b></span>
+        </div>
+        <div class="dropdown-item link-item" *ngIf="role=='0'" data-toggle="modal" data-target="#addUserModel"><i
+          class="fas fa-users-cog"></i>&nbsp;&nbsp;Add users
+        </div>
+        <div class="dropdown-item link-item" (click)="logout()"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+        </div>
+      </div>
     </li>
   </ul>
 
 </nav>
+
+<div class="modal fade" id="addUserModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter User Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="email">Enter Email</label>
+          <input type="email" [(ngModel)]="add_email" class="form-control" id="email" placeholder="user@abc.com">
+        </div>
+        <div class="form-group">
+          <label for="role">Select role</label>
+          <select [(ngModel)]="add_role" class="form-control" id="role">
+            <option value="0">Admin</option>
+            <option value="1" selected>Member</option>
+          </select>
+        </div>
+        <div id='toolbar'>
+          <div class='wrapper text-center'>
+            <div class="btn-group">
+              <button type="button" (click)="resetUser()" class="btn btn-danger"><i class="fas fa-user-plus"></i>&nbsp;&nbsp;Reset</button>
+              <button type="button" (click)="addUser()" class="btn btn-success"><i class="fas fa-user-plus"></i>&nbsp;&nbsp;Add User
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
