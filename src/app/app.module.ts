@@ -29,7 +29,7 @@ import {AddUserService} from './services/add-user.service';
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('768229157076-0pf7fsda7gsae2ek56afnqvfar3rq1qf.apps.googleusercontent.com')
+    provider: new GoogleLoginProvider('47920873754-145evs8v11u2sqc1feau3gsuacfm991r.apps.googleusercontent.com')
   }
 ]);
 
