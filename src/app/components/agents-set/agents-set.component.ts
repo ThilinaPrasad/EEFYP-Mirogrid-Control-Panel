@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AgentService} from '../../services/agents/agent.service';
 
 @Component({
   selector: 'app-agents-set',
@@ -7,21 +8,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgentsSetComponent implements OnInit {
 
-  mainAgent = 'ACTIVE';
-  solarPvAgent = 'ACTIVE';
-  dieselGenAgent = 'TERMINATED';
-  batteryAgent = 'ACTIVE';
-  loadAgent = 'ACTIVE';
+  serverAgent;
+  solarPvAgent;
+  dieselGenAgent;
+  // tslint:disable-next-line:variable-name
+  loadAgent_1;
+  // tslint:disable-next-line:variable-name
+  loadAgent_2;
 
-  batteryPercentage = 20;
+  // batteryAgent;
+  // batteryPercentage = 20;
 
 
   modelTitle = 'Main Agent';
-  agentVoltage = 0;
-  agentCurrent = 0;
-  agentPower = 0;
-  agentStatus = 'TERMINATED';
-  constructor() { }
+  modelLoadedAgent = {property_1: {name: 'Status', value: 1},
+    property_2: {name: 'Voltage (V)', value: 55},
+    property_3: {name: 'Current (A)', value: 60},
+    property_4: {name: 'Power (W)', value: 60}
+
+  };
+
+
+  constructor(private agentService: AgentService) {
+    // Server agent
+    agentService.getAgentData('serverAgent').subscribe((data) => {
+      this.serverAgent = data;
+    });
+
+    // Solar PV agent
+    agentService.getAgentData('solarAgent').subscribe((data) => {
+      console.log(data);
+      this.solarPvAgent = data;
+    });
+
+    // Diesel Gen. agent
+    agentService.getAgentData('dieselAgent').subscribe((data) => {
+      this.dieselGenAgent = data;
+    });
+
+    // Load Agent 01 agent
+    agentService.getAgentData('loadAgent_1').subscribe((data) => {
+      this.loadAgent_1 = data;
+    });
+
+    // Load Agent 02 agent
+    agentService.getAgentData('loadAgent_2').subscribe((data) => {
+      this.loadAgent_2 = data;
+      this.loadAgent_2.checked = new Date();
+    });
+  }
 
   ngOnInit() {
   }
@@ -29,20 +64,67 @@ export class AgentsSetComponent implements OnInit {
   loadAgentValues(id) {
     switch (id) {
       case 0:
-        this.modelTitle = 'Main Agent';
-        this.agentStatus = this.mainAgent;
+        this.modelTitle = 'Server Agent';
+        this.agentService.getAgentData('serverAgent').subscribe((data: any) => {
+          this.serverAgent = data;
+          this.modelLoadedAgent.property_1.value = data.status;
+          this.modelLoadedAgent.property_2.name = 'Current (A)';
+          this.modelLoadedAgent.property_2.value =  data.current;
+          this.modelLoadedAgent.property_3.name = 'Power In (W)';
+          this.modelLoadedAgent.property_3.value =  data.power_in;
+          this.modelLoadedAgent.property_4.name = 'Power Out (W)';
+          this.modelLoadedAgent.property_4.value =  data.power_out;
+        });
         break;
       case 1:
         this.modelTitle = 'Solar PV Agent';
-        this.agentStatus = this.solarPvAgent;
+        this.agentService.getAgentData('solarAgent').subscribe((data: any) => {
+          this.modelLoadedAgent.property_1.value = data.status;
+          this.modelLoadedAgent.property_2.name = 'Voltage (V)';
+          this.modelLoadedAgent.property_2.value = data.voltage;
+          this.modelLoadedAgent.property_3.name = 'Current (A)';
+          this.modelLoadedAgent.property_3.value = data.current;
+          this.modelLoadedAgent.property_4.name = 'Power (W)';
+          this.modelLoadedAgent.property_4.value = data.power;
+        });
         break;
       case 2:
         this.modelTitle = 'Diesel Gen. Agent';
-        this.agentStatus = this.dieselGenAgent;
+        this.agentService.getAgentData('dieselAgent').subscribe((data: any) => {
+          this.modelLoadedAgent.property_1.value = data.status;
+          this.modelLoadedAgent.property_2.name = 'Voltage (V)';
+          this.modelLoadedAgent.property_2.value = data.voltage;
+          this.modelLoadedAgent.property_3.name = 'Current (A)';
+          this.modelLoadedAgent.property_3.value = data.current;
+          this.modelLoadedAgent.property_4.name = 'Power (W)';
+          this.modelLoadedAgent.property_4.value = data.power;
+        });
         break;
       case 3:
-        this.modelTitle = 'Load Agent';
-        this.agentStatus = this.loadAgent;
+        this.modelTitle = 'Load Agent 01';
+        this.agentService.getAgentData('loadAgent_1').subscribe((data: any) => {
+          this.modelLoadedAgent.property_1.value = data.status;
+          this.modelLoadedAgent.property_2.name = 'Voltage (V)';
+          this.modelLoadedAgent.property_2.value = data.voltage;
+          this.modelLoadedAgent.property_3.name = 'Current (A)';
+          this.modelLoadedAgent.property_3.value = data.current;
+          this.modelLoadedAgent.property_4.name = 'Power (W)';
+          this.modelLoadedAgent.property_4.value = data.power;
+        });
+        break;
+      case 4:
+        this.modelTitle = 'Load Agent 02';
+        this.agentService.getAgentData('loadAgent_2').subscribe((data: any) => {
+          this.modelLoadedAgent.property_1.value = data.status;
+          this.modelLoadedAgent.property_2.name = 'Voltage (V)';
+          this.modelLoadedAgent.property_2.value = data.voltage;
+          this.modelLoadedAgent.property_3.name = 'Current (A)';
+          this.modelLoadedAgent.property_3.value = data.current;
+          this.modelLoadedAgent.property_4.name = 'Power (W)';
+          this.modelLoadedAgent.property_4.value = data.power;
+        });
+        break;
+      default:
         break;
     }
   }

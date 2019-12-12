@@ -4,23 +4,24 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 import {HttpClient} from '@angular/common/http';
 import { users } from '../users.json';
 import {Router} from '@angular/router';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {UserService} from '../users/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleLoginService {
   public user;
-  public role;
   public isLogged: boolean;
-  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router, private userService: UserService) {
+
     // tslint:disable-next-line:variable-name
     const temp_usr = localStorage.getItem('user');
     if (temp_usr) {
-      this.isLogged = true;
       this.user = JSON.parse(temp_usr);
-      this.role = users[this.getUid(users, this.user.email)][1];
+      this.isLogged = true;
     }
-    console.log(this.role);
   }
 
   signInWithGoogle() {
@@ -30,36 +31,25 @@ export class GoogleLoginService {
   signOut(): void {
     this.authService.signOut();
     this.user = null;
-    this.role = null;
     this.isLogged = false;
     localStorage.removeItem('user');
     this.router.navigate(['']);
   }
 
-
-
-  validateUser(user) {
-    this.user = user;
-    if (this.exists(users, this.user.email)) {
-      this.isLogged = true;
-      this.role = users[this.getUid(users, this.user.email)][1];
-      console.log(this.role);
-      localStorage.setItem('user', JSON.stringify(user));
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  exists(arr, search) {
-    return arr.some(row => row.includes(search));
-  }
-
-  getUid(arr, search) {
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i].includes(search)){
-          return i;
+async validateUser(user) {
+    return new Promise(resolve => {
+      this.userService.getUserByEmail(user.email).subscribe((data: any) => {
+        if (data.length) {
+          user.role = data[0].role;
+          this.user = user;
+          this.isLogged = true;
+          localStorage.setItem('user', JSON.stringify(user));
+          resolve(true);
+        } else {
+          resolve(false);
         }
-    }
+      });
+    });
   }
+
 }

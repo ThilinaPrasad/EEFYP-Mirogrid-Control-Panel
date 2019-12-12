@@ -40,11 +40,11 @@ export class FloatingBtnComponent implements OnInit {
         }
         , 5000);
       this.snotifyService.error('Do you need to sign out?', 'Sign out?', {
-        timeout: 5000,
-        showProgressBar: true,
-        closeOnClick: false,
-        pauseOnHover: true,
-        icon: 'https://image.flaticon.com/icons/svg/25/25376.svg',
+          timeout: 5000,
+          showProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          icon: 'https://image.flaticon.com/icons/svg/25/25376.svg',
         buttons: [
           {
             text: 'Yes', action: (toast) => {

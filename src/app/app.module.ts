@@ -25,7 +25,13 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import {NgxPageScrollModule} from 'ngx-page-scroll';
 import {FormsModule} from '@angular/forms';
-import {AddUserService} from './services/add-user.service';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {environment} from '../environments/environment';
+import {UserService} from './services/users/user.service';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {ConnectionService} from './services/conns/connection.service';
+import {AgentService} from './services/agents/agent.service';
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -64,6 +70,9 @@ export function provideConfig() {
     NgxPageScrollCoreModule.forRoot({duration: 200, scrollOffset: 70}),
     NgxPageScrollModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     {
@@ -74,7 +83,9 @@ export function provideConfig() {
     AuthguardServiceService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
     SnotifyService,
-    AddUserService,
+    UserService,
+    ConnectionService,
+    AgentService
   ],
   bootstrap: [AppComponent]
 })

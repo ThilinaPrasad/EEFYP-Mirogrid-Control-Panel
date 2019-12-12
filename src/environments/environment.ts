@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyAPWmosKTkxdN4dx0fVpBKaSehXUErFEW4',
+    authDomain: 'microgridsuom.firebaseapp.com',
+    databaseURL: 'https://microgridsuom.firebaseio.com',
+    projectId: 'microgridsuom',
+    storageBucket: 'microgridsuom.appspot.com',
+    messagingSenderId: '644349894682',
+    appId: '1:644349894682:web:74cc8cd04321890d94b1a3',
+    measurementId: 'G-JMRGNYTD6L'
+  }
 };
 
 /*

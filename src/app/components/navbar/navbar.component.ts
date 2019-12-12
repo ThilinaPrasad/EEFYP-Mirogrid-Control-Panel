@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GoogleLoginService} from '../../services/auth/google-login.service';
 import {SnotifyService} from 'ng-snotify';
-import {AddUserService} from '../../services/add-user.service';
+import {UserService} from '../../services/users/user.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -21,11 +22,11 @@ export class NavbarComponent implements OnInit {
   private add_role = 1;
 
   private signOutNotificationAllow = true;
-  constructor(private googleLoginService: GoogleLoginService, private snotifyService: SnotifyService, private addUsersService: AddUserService) {
+  constructor(private googleLoginService: GoogleLoginService, private snotifyService: SnotifyService, private userService: UserService) {
     if (googleLoginService.isLogged) {
       this.userName = googleLoginService.user.firstName + ' ' + googleLoginService.user.lastName;
       this.userImg = googleLoginService.user.photoUrl;
-      this.role = googleLoginService.role;
+      this.role = googleLoginService.user.role;
     }
   }
 
@@ -65,14 +66,29 @@ export class NavbarComponent implements OnInit {
   }
 
   addUser() {
-    if (this.add_email && this.add_email.trim()) {
-      // tslint:disable-next-line:variable-name
-      const add_user = [ this.add_email, this.add_role.toString()];
-      this.addUsersService.addUser(add_user);
+    if (!(this.add_email && this.add_email.trim())) {
+      return;
     }
+    // tslint:disable-next-line:variable-name
+    const add_user = {email: this.add_email, role: this.add_role};
+    const successAction = Observable.create(observer => {
+      this.userService.addUser(add_user).then(() => {
+        observer.next({
+          title: 'Success!',
+          body: 'User Addedd successfully'
+        });
+        observer.complete();
+      });
+    });
+    this.snotifyService.async('Adding user....', successAction, {
+      timeout: 2000,
+      showProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: true});
+
   }
 
-  resetUser(){
+  resetUser() {
     this.add_email = null;
     this.add_role = 1;
   }
