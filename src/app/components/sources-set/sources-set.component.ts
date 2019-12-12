@@ -8,30 +8,30 @@ import {ConnectionService} from '../../services/conns/connection.service';
 })
 export class SourcesSetComponent implements OnInit {
 
-  girdConnStatus = 'OFF';
-  dieselGenStatus = 'OFF';
-  solarPvStatus = 'ON';
-  batteryPercentage = 20;
+  girdConn;
+  dieselGenConn;
+  solarPvConn;
+  batteryConn;
 
   constructor(private connections: ConnectionService) {
     // Battery agent Data
     connections.getConnData('battery_conn').subscribe((data: any) => {
-      this.batteryPercentage = data.presentage;
+      this.batteryConn = data;
     });
 
     // Grid conn data
     connections.getConnData('grid_conn').subscribe((data: any) => {
-      this.girdConnStatus = data.status ? 'ON' : 'OFF';
+      this.girdConn = data;
     });
 
     // Diesel conn data
     connections.getConnData('diesel_gen_conn').subscribe((data: any) => {
-      this.dieselGenStatus = data.status ? 'ON' : 'OFF';
+      this.dieselGenConn = data;
     });
 
     // Solar PV conn data
     connections.getConnData('solar_pv_conn').subscribe((data: any) => {
-      this.solarPvStatus = data.status ? 'ON' : 'OFF';
+      this.solarPvConn = data;
     });
     }
 

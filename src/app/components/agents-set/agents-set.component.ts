@@ -37,7 +37,6 @@ export class AgentsSetComponent implements OnInit {
 
     // Solar PV agent
     agentService.getAgentData('solarAgent').subscribe((data) => {
-      console.log(data);
       this.solarPvAgent = data;
     });
 

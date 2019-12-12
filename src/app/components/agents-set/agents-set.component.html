@@ -5,11 +5,11 @@
       <div class="source-wrapper text-center">
         <h4>Server<br>Agent</h4>
         <div class="status-icon-wrapper">
-          <i class="far success status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': serverAgent.status,'error fa-times-circle': !serverAgent.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(0)"></i>
+          <i class="far success status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': serverAgent?.status,'error fa-times-circle': !serverAgent?.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(0)"></i>
         </div>
         <h6>Connection Status</h6>
-        <h6 [ngClass]="{'success': serverAgent.status,'error': !serverAgent.status}">{{ serverAgent.status? 'ACITIVE' : 'TERMINATED' }}</h6>
-        <pre>Last Checked: <br>{{ serverAgent.lastchecked | date:'shortTime' }}</pre>
+        <h6 [ngClass]="{'success': serverAgent?.status,'error': !serverAgent?.status}">{{ serverAgent?.status? 'ACITIVE' : 'TERMINATED' }}</h6>
+        <pre>Last Checked: <br>{{ serverAgent?.lastchecked | date:'shortTime' }}</pre>
       </div>
     </div>
     <div class="col-md-2">
@@ -17,11 +17,11 @@
       <div class="source-wrapper text-center">
         <h4>Solar PV<br>Agent</h4>
         <div class="status-icon-wrapper">
-          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': solarPvAgent.status,'error fa-times-circle': !solarPvAgent.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(1)"></i>
+          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': solarPvAgent?.status,'error fa-times-circle': !solarPvAgent?.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(1)"></i>
         </div>
         <h6>Connection Status</h6>
-        <h6 [ngClass]="{'success': solarPvAgent.status ,'error': !solarPvAgent.status}">{{ solarPvAgent.status? "ACTIVE": "TERMINATED" }}</h6>
-        <pre>Last Checked <br>{{ solarPvAgent.lastchecked | date:'shortTime' }}</pre>
+        <h6 [ngClass]="{'success': solarPvAgent?.status ,'error': !solarPvAgent?.status}">{{ solarPvAgent?.status? "ACTIVE": "TERMINATED" }}</h6>
+        <pre>Last Checked <br>{{ solarPvAgent?.lastchecked | date:'shortTime' }}</pre>
       </div>
     </div>
     <div class="col-md-2">
@@ -29,11 +29,11 @@
       <div class="source-wrapper text-center">
         <h4>Diesel Gen.<br>Agent</h4>
         <div class="status-icon-wrapper">
-          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': dieselGenAgent.status,'error fa-times-circle': !dieselGenAgent.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(2)"></i>
+          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': dieselGenAgent?.status,'error fa-times-circle': !dieselGenAgent?.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(2)"></i>
         </div>
         <h6>Connection Status</h6>
-        <h6 [ngClass]="{'success': dieselGenAgent.status,'error': !dieselGenAgent.status}">{{ dieselGenAgent.status? 'ACTIVE': 'TERMINATED' }}</h6>
-        <pre class="last-checked">Last Checked <br>{{ dieselGenAgent.lastchecked | date:'shortTime' }}</pre>
+        <h6 [ngClass]="{'success': dieselGenAgent?.status,'error': !dieselGenAgent?.status}">{{ dieselGenAgent?.status? 'ACTIVE': 'TERMINATED' }}</h6>
+        <pre class="last-checked">Last Checked <br>{{ dieselGenAgent?.lastchecked | date:'shortTime' }}</pre>
       </div>
     </div>
 <!--    <div class="col-md-2">-->
@@ -55,11 +55,11 @@
       <div class="source-wrapper text-center">
         <h4>Load<br>Agent 01</h4>
         <div class="status-icon-wrapper">
-          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': loadAgent_1.status,'error fa-times-circle': !loadAgent_1.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(3)"></i>
+          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': loadAgent_1?.status,'error fa-times-circle': !loadAgent_1?.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(3)"></i>
         </div>
         <h6>Connection Status</h6>
-        <h6 [ngClass]="{'success': loadAgent_1.status,'error': !loadAgent_1.status}">{{ loadAgent_1.status? 'ACTIVE': 'TERMINATED' }}</h6>
-        <pre class="last-checked">Last Checked <br>{{ loadAgent_1.lastchecked | date:'shortTime' }}</pre>
+        <h6 [ngClass]="{'success': loadAgent_1?.status,'error': !loadAgent_1?.status}">{{ loadAgent_1?.status? 'ACTIVE': 'TERMINATED' }}</h6>
+        <pre class="last-checked">Last Checked <br>{{ loadAgent_1?.lastchecked | date:'shortTime' }}</pre>
       </div>
     </div>
 
@@ -68,11 +68,11 @@
       <div class="source-wrapper text-center">
         <h4>Load<br>Agent 02</h4>
         <div class="status-icon-wrapper">
-          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': loadAgent_2.status,'error fa-times-circle': !loadAgent_2.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(4)"></i>
+          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': loadAgent_2?.status,'error fa-times-circle': !loadAgent_2?.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(4)"></i>
         </div>
         <h6>Connection Status</h6>
-        <h6 [ngClass]="{'success': loadAgent_2.status,'error': !loadAgent_2.status}">{{ loadAgent_2.status? 'ACTIVE': 'TERMINATED' }}</h6>
-        <pre class="last-checked">Last Checked <br>{{ loadAgent_2.lastchecked | date:'shortTime' }}</pre>
+        <h6 [ngClass]="{'success': loadAgent_2?.status,'error': !loadAgent_2?.status}">{{ loadAgent_2?.status? 'ACTIVE': 'TERMINATED' }}</h6>
+        <pre class="last-checked">Last Checked <br>{{ loadAgent_2?.lastchecked | date:'shortTime' }}</pre>
       </div>
     </div>
   </div>

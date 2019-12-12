@@ -5,10 +5,10 @@
       <div class="source-wrapper text-center">
         <h4>Grid Connection</h4>
         <div class="status-icon-wrapper">
-      <i class="far success status" [ngClass]="{'success fa-check-circle': girdConnStatus=='ON','error fa-times-circle': girdConnStatus=='OFF'}"></i>
+      <i class="far success status" [ngClass]="{'success fa-check-circle': girdConn?.status,'error fa-times-circle': !girdConn?.status}"></i>
         </div>
-        <h6>Connection Status : {{ girdConnStatus }}</h6>
-        <pre>Last Checked:</pre>
+        <h6>Connection Status : {{ girdConn?.status? 'ON': 'OFF' }}</h6>
+        <pre>Last Checked: <br>{{ girdConn?.lastchecked | date:'shortTime' }}</pre>
       </div>
     </div>
     <div class="col-md-3">
@@ -16,10 +16,10 @@
       <div class="source-wrapper text-center">
         <h4>Diesel Generator</h4>
         <div class="status-icon-wrapper">
-          <i class="far status" [ngClass]="{'success fa-check-circle': dieselGenStatus=='ON','error fa-times-circle': dieselGenStatus=='OFF'}"></i>
+          <i class="far status" [ngClass]="{'success fa-check-circle': dieselGenConn?.status,'error fa-times-circle': !dieselGenConn?.status}"></i>
         </div>
-        <h6>Connection Status : {{ dieselGenStatus }}</h6>
-        <pre>Last Checked:</pre>
+        <h6>Connection Status :{{ dieselGenConn?.status? 'ON': 'OFF' }} </h6>
+        <pre>Last Checked: <br>{{ dieselGenConn?.lastchecked | date:'shortTime' }}</pre>
       </div>
     </div>
     <div class="col-md-3">
@@ -27,22 +27,23 @@
       <div class="source-wrapper text-center">
         <h4>Solar PV</h4>
         <div class="status-icon-wrapper">
-          <i class="far status" [ngClass]="{'success fa-check-circle': solarPvStatus=='ON','error fa-times-circle': solarPvStatus=='OFF'}"></i>
+          <i class="far status" [ngClass]="{'success fa-check-circle': solarPvConn?.status,'error fa-times-circle': !solarPvConn?.status}"></i>
         </div>
-        <h6>Connection Status : {{ solarPvStatus }}</h6>
-        <pre class="last-checked">Last Checked:</pre>
+        <h6>Connection Status : {{ solarPvConn?.status? 'ON': 'OFF' }}</h6>
+        <pre class="last-checked">Last Checked: <br>{{ solarPvConn?.lastchecked | date:'shortTime' }}</pre>
       </div>
     </div>
     <div class="col-md-3">
+      <!--Battery source status indicator-->
       <div class="source-wrapper text-center">
         <h4>Battery Status</h4>
         <div class="status-battery-wrapper">
-          <div class="battery" [ngClass]="{ 'battery-warn': batteryPercentage<=25, 'battery-alert' : batteryPercentage<=10 }">
-            <div class="battery-level text-center" [ngStyle]="{ 'height': batteryPercentage+'%' }" [ngClass]="{ 'battery-level-full': batteryPercentage==100, 'battery-level-warn': batteryPercentage<=25, 'battery-level-alert' : batteryPercentage<=10 }"><div>{{ batteryPercentage+'%' }}</div></div>
+          <div class="battery" [ngClass]="{ 'battery-warn': batteryConn?.presentage <=25, 'battery-alert' : batteryConn?.presentage<=10 }">
+            <div class="battery-level text-center" [ngStyle]="{ 'height': batteryConn?.presentage+'%' }" [ngClass]="{ 'battery-level-full': batteryConn?.presentage==100, 'battery-level-warn': batteryConn?.presentage<=25, 'battery-level-alert' : batteryConn?.presentage<=10 }"><div>{{ batteryConn?.presentage+'%' }}</div></div>
           </div>
         </div>
-        <h6>Percentage : {{ batteryPercentage+'%' }}</h6>
-        <pre class="last-checked">Last Checked:</pre>
+        <h6>Percentage : {{ batteryConn?.presentage+'%' }}</h6>
+        <pre class="last-checked">Last Checked: <br>{{ batteryConn?.lastchecked | date:'shortTime' }}</pre>
       </div>
     </div>
   </div>
