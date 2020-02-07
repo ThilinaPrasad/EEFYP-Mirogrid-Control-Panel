@@ -25,15 +25,15 @@
       </div>
     </div>
     <div class="col-md-2">
-      <!--Diesel Gen. Agent indicator-->
+      <!--Wind Gen. Agent indicator-->
       <div class="source-wrapper text-center">
-        <h4>Diesel Gen.<br>Agent</h4>
+        <h4>Winds Gen.<br>Agent</h4>
         <div class="status-icon-wrapper">
-          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': dieselGenAgent?.status,'error fa-times-circle': !dieselGenAgent?.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(2)"></i>
+          <i class="far status" placement="bottom" ngbTooltip="Click to view details" [ngClass]="{'success fa-check-circle': windGenAgent?.status,'error fa-times-circle': !windGenAgent?.status}" data-toggle="modal" data-target="#detailsModel" (click)="loadAgentValues(2)"></i>
         </div>
         <h6>Connection Status</h6>
-        <h6 [ngClass]="{'success': dieselGenAgent?.status,'error': !dieselGenAgent?.status}">{{ dieselGenAgent?.status? 'ACTIVE': 'TERMINATED' }}</h6>
-        <pre class="last-checked">Last Checked <br>{{ dieselGenAgent?.lastchecked | date:'shortTime' }}</pre>
+        <h6 [ngClass]="{'success': windGenAgent?.status,'error': !windGenAgent?.status}">{{ windGenAgent?.status? 'ACTIVE': 'TERMINATED' }}</h6>
+        <pre class="last-checked">Last Checked <br>{{ windGenAgent?.lastchecked | date:'shortTime' }}</pre>
       </div>
     </div>
 <!--    <div class="col-md-2">-->

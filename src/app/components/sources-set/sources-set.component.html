@@ -14,12 +14,12 @@
     <div class="col-md-3">
       <!--Diesel gene status indicator-->
       <div class="source-wrapper text-center">
-        <h4>Diesel Generator</h4>
+        <h4>Wind Generator</h4>
         <div class="status-icon-wrapper">
-          <i class="far status" [ngClass]="{'success fa-check-circle': dieselGenConn?.status,'error fa-times-circle': !dieselGenConn?.status}"></i>
+          <i class="far status" [ngClass]="{'success fa-check-circle': windGenConn?.status,'error fa-times-circle': !windGenConn?.status}"></i>
         </div>
-        <h6>Connection Status :{{ dieselGenConn?.status? 'ON': 'OFF' }} </h6>
-        <pre>Last Checked: <br>{{ dieselGenConn?.lastchecked | date:'shortTime' }}</pre>
+        <h6>Connection Status :{{ windGenConn?.status? 'ON': 'OFF' }} </h6>
+        <pre>Last Checked: <br>{{ windGenConn?.lastchecked | date:'shortTime' }}</pre>
       </div>
     </div>
     <div class="col-md-3">

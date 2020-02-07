@@ -10,7 +10,7 @@ export class AgentsSetComponent implements OnInit {
 
   serverAgent;
   solarPvAgent;
-  dieselGenAgent;
+  windGenAgent;
   // tslint:disable-next-line:variable-name
   loadAgent_1;
   // tslint:disable-next-line:variable-name
@@ -40,9 +40,9 @@ export class AgentsSetComponent implements OnInit {
       this.solarPvAgent = data;
     });
 
-    // Diesel Gen. agent
-    agentService.getAgentData('dieselAgent').subscribe((data) => {
-      this.dieselGenAgent = data;
+    // Wind Gen. agent
+    agentService.getAgentData('windAgent').subscribe((data) => {
+      this.windGenAgent = data;
     });
 
     // Load Agent 01 agent
@@ -88,8 +88,8 @@ export class AgentsSetComponent implements OnInit {
         });
         break;
       case 2:
-        this.modelTitle = 'Diesel Gen. Agent';
-        this.agentService.getAgentData('dieselAgent').subscribe((data: any) => {
+        this.modelTitle = 'Wind Gen. Agent';
+        this.agentService.getAgentData('windAgent').subscribe((data: any) => {
           this.modelLoadedAgent.property_1.value = data.status;
           this.modelLoadedAgent.property_2.name = 'Voltage (V)';
           this.modelLoadedAgent.property_2.value = data.voltage;

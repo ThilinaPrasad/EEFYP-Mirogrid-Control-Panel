@@ -2,7 +2,6 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 import {AuthService, SocialUser} from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import {HttpClient} from '@angular/common/http';
-import { users } from '../users.json';
 import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {UserService} from '../users/user.service';

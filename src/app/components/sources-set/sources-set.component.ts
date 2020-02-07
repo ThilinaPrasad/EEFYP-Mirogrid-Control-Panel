@@ -9,7 +9,7 @@ import {ConnectionService} from '../../services/conns/connection.service';
 export class SourcesSetComponent implements OnInit {
 
   girdConn;
-  dieselGenConn;
+  windGenConn;
   solarPvConn;
   batteryConn;
 
@@ -25,8 +25,8 @@ export class SourcesSetComponent implements OnInit {
     });
 
     // Diesel conn data
-    connections.getConnData('diesel_gen_conn').subscribe((data: any) => {
-      this.dieselGenConn = data;
+    connections.getConnData('wind_gen_conn').subscribe((data: any) => {
+      this.windGenConn = data;
     });
 
     // Solar PV conn data
