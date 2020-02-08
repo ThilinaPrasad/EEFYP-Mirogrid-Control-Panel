@@ -9,7 +9,7 @@
         </div>
         <h6>Connection Status</h6>
         <h6 [ngClass]="{'success': serverAgent?.status,'error': !serverAgent?.status}">{{ serverAgent?.status? 'ACITIVE' : 'TERMINATED' }}</h6>
-        <pre>Last Checked: <br>{{ serverAgent?.lastchecked | date:'shortTime' }}</pre>
+        <pre>Last Checked: <br>{{ serverAgent?.lastchecked | date:'mediumTime' }}</pre>
       </div>
     </div>
     <div class="col-md-2">
@@ -21,7 +21,7 @@
         </div>
         <h6>Connection Status</h6>
         <h6 [ngClass]="{'success': solarPvAgent?.status ,'error': !solarPvAgent?.status}">{{ solarPvAgent?.status? "ACTIVE": "TERMINATED" }}</h6>
-        <pre>Last Checked <br>{{ solarPvAgent?.lastchecked | date:'shortTime' }}</pre>
+        <pre>Last Checked <br>{{ solarPvAgent?.lastchecked | date:'mediumTime' }}</pre>
       </div>
     </div>
     <div class="col-md-2">
@@ -33,7 +33,7 @@
         </div>
         <h6>Connection Status</h6>
         <h6 [ngClass]="{'success': windGenAgent?.status,'error': !windGenAgent?.status}">{{ windGenAgent?.status? 'ACTIVE': 'TERMINATED' }}</h6>
-        <pre class="last-checked">Last Checked <br>{{ windGenAgent?.lastchecked | date:'shortTime' }}</pre>
+        <pre class="last-checked">Last Checked <br>{{ windGenAgent?.lastchecked | date:'mediumTime' }}</pre>
       </div>
     </div>
 <!--    <div class="col-md-2">-->
@@ -59,7 +59,7 @@
         </div>
         <h6>Connection Status</h6>
         <h6 [ngClass]="{'success': loadAgent_1?.status,'error': !loadAgent_1?.status}">{{ loadAgent_1?.status? 'ACTIVE': 'TERMINATED' }}</h6>
-        <pre class="last-checked">Last Checked <br>{{ loadAgent_1?.lastchecked | date:'shortTime' }}</pre>
+        <pre class="last-checked">Last Checked <br>{{ loadAgent_1?.lastchecked | date:'mediumTime' }}</pre>
       </div>
     </div>
 
@@ -72,7 +72,7 @@
         </div>
         <h6>Connection Status</h6>
         <h6 [ngClass]="{'success': loadAgent_2?.status,'error': !loadAgent_2?.status}">{{ loadAgent_2?.status? 'ACTIVE': 'TERMINATED' }}</h6>
-        <pre class="last-checked">Last Checked <br>{{ loadAgent_2?.lastchecked | date:'shortTime' }}</pre>
+        <pre class="last-checked">Last Checked <br>{{ loadAgent_2?.lastchecked | date:'mediumTime' }}</pre>
       </div>
     </div>
   </div>
@@ -98,7 +98,7 @@
           <tbody>
           <tr>
             <td>{{ modelLoadedAgent.property_1.name }}</td>
-            <td [ngClass]="{'success': modelLoadedAgent.property_1.value,'error': !modelLoadedAgent.property_1.value}">{{ modelLoadedAgent.property_1.value? 'ACITIVE': "TERMINATED" }}</td>
+            <td [ngClass]="{'success': modelLoadedAgent.property_1.value,'error': !modelLoadedAgent.property_1.value}">{{ modelLoadedAgent.property_1.value? 'ACTIVE': "TERMINATED" }}</td>
           </tr>
           <tr>
           <tr>

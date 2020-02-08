@@ -9,7 +9,6 @@ import {Title} from '@angular/platform-browser';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
 
   constructor(private titleService: Title) {
     this.titleService.setTitle('EEFYP | Home');

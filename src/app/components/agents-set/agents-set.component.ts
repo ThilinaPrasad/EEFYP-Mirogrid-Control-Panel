@@ -33,27 +33,31 @@ export class AgentsSetComponent implements OnInit {
     // Server agent
     agentService.getAgentData('serverAgent').subscribe((data) => {
       this.serverAgent = data;
+      this.serverAgent.lastchecked = new Date();
     });
 
     // Solar PV agent
     agentService.getAgentData('solarAgent').subscribe((data) => {
       this.solarPvAgent = data;
+      this.solarPvAgent.lastchecked = new Date();
     });
 
     // Wind Gen. agent
     agentService.getAgentData('windAgent').subscribe((data) => {
       this.windGenAgent = data;
+      this.windGenAgent.lastchecked = new Date();
     });
 
     // Load Agent 01 agent
     agentService.getAgentData('loadAgent_1').subscribe((data) => {
       this.loadAgent_1 = data;
+      this.loadAgent_1.lastchecked = new Date();
     });
 
     // Load Agent 02 agent
     agentService.getAgentData('loadAgent_2').subscribe((data) => {
       this.loadAgent_2 = data;
-      this.loadAgent_2.checked = new Date();
+      this.loadAgent_2.lastchecked = new Date();
     });
   }
 

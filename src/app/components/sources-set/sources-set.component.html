@@ -8,7 +8,7 @@
       <i class="far success status" [ngClass]="{'success fa-check-circle': girdConn?.status,'error fa-times-circle': !girdConn?.status}"></i>
         </div>
         <h6>Connection Status : {{ girdConn?.status? 'ON': 'OFF' }}</h6>
-        <pre>Last Checked: <br>{{ girdConn?.lastchecked | date:'shortTime' }}</pre>
+        <pre>Last Checked: <br>{{ girdConn?.lastchecked | date:'mediumTime' }}</pre>
       </div>
     </div>
     <div class="col-md-3">
@@ -19,7 +19,7 @@
           <i class="far status" [ngClass]="{'success fa-check-circle': windGenConn?.status,'error fa-times-circle': !windGenConn?.status}"></i>
         </div>
         <h6>Connection Status :{{ windGenConn?.status? 'ON': 'OFF' }} </h6>
-        <pre>Last Checked: <br>{{ windGenConn?.lastchecked | date:'shortTime' }}</pre>
+        <pre>Last Checked: <br>{{ windGenConn?.lastchecked | date:'mediumTime' }}</pre>
       </div>
     </div>
     <div class="col-md-3">
@@ -30,7 +30,7 @@
           <i class="far status" [ngClass]="{'success fa-check-circle': solarPvConn?.status,'error fa-times-circle': !solarPvConn?.status}"></i>
         </div>
         <h6>Connection Status : {{ solarPvConn?.status? 'ON': 'OFF' }}</h6>
-        <pre class="last-checked">Last Checked: <br>{{ solarPvConn?.lastchecked | date:'shortTime' }}</pre>
+        <pre class="last-checked">Last Checked: <br>{{ solarPvConn?.lastchecked | date:'mediumTime' }}</pre>
       </div>
     </div>
     <div class="col-md-3">
@@ -43,7 +43,7 @@
           </div>
         </div>
         <h6>Percentage : {{ batteryConn?.presentage+'%' }}</h6>
-        <pre class="last-checked">Last Checked: <br>{{ batteryConn?.lastchecked | date:'shortTime' }}</pre>
+        <pre class="last-checked">Last Checked: <br>{{ batteryConn?.lastchecked | date:'mediumTime' }}</pre>
       </div>
     </div>
   </div>
